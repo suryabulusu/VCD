@@ -1,3 +1,6 @@
+from densities import log2dGauss
+import hmc
+
 dim_z = 2
 mu_v = np.random.normal(size = 2)
 sigma_v = 0.1*np.ones(dim_z)
