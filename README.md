@@ -1,0 +1,2 @@
+# VCD
+Variational Contrastive Divergence
