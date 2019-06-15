@@ -1,3 +1,40 @@
+dim_z = 2
+mu_v = np.random.normal(size = 2)
+sigma_v = 0.1*np.ones(dim_z)
+
+burnIters = 2
+samplingIters = 1
+adaptDuringBurn = 1
+LF = 5
+
+iters = 20000;  # Number of iterations
+
+# RMSProp parameters
+rhomu = 0.01;
+rhosigma = 0.005;
+ReducedBy = 0.9; 
+ReducedEvery = 2000;
+TT = 1;
+kappa0 = 0.1;
+
+# Control variates
+control_variate = 0;
+theta = 0.9;
+use_control_variate = 1;
+
+# Quantities to compute at each iteration
+stochasticDiv = np.zeros(iters);
+ELBO_q = np.zeros(iters);
+expLogLik_qt = np.zeros(iters);
+first_term = np.zeros(iters);
+
+acceptHist = np.zeros(burnIters+samplingIters);
+acceptRate = 0;
+
+# vars for RMSProp
+Gt_mu = 0.01*np.ones(np.shape(mu_v)[0]);
+Gt_sigma = 0.01*np.ones(np.shape(sigma_v));
+
 # Algorithm
 
 dist = log2dGauss(mu, L)
